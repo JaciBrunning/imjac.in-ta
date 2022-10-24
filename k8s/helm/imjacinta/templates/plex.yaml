@@ -1,0 +1,53 @@
+{{- $subdict := dict "name" "plex" "valspec" .Values.plex -}}
+{{- $dict := merge $subdict . -}}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "rails.fullname" $dict }}
+  labels:
+    app: {{ template "rails.name" $dict }}
+    chart: {{ template "imjacinta.chart" . }}
+    release: {{ .Release.Name | quote }}
+spec:
+  ports:
+  - port: 32400
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: {{ template "rails.fullname" $dict }}
+  labels:
+    app: {{ template "rails.name" $dict }}
+    chart: {{ template "imjacinta.chart" . }}
+    release: {{ .Release.Name | quote }}
+subsets:
+  - addresses:
+      - ip: 10.1.100.100
+    ports:
+      - port: 32400
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ template "rails.fullname" $dict }}
+  labels:
+    app: {{ template "rails.name" $dict }}
+    chart: {{ template "imjacinta.chart" . }}
+    release: {{ .Release.Name | quote }}
+
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    {{- if .Values.traefik.ports.websecure.tls.enabled }}
+    certResolver: default
+    {{- end }}
+  routes:
+  - match: {{ .Values.plex.ingress.rule }}
+    kind: Rule
+    priority: {{ default 0 .Values.plex.ingress.priority }}
+    services:
+    - name: {{ template "rails.fullname" $dict }}
+      port: 32400
