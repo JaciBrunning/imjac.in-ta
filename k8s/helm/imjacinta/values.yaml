@@ -12,10 +12,10 @@ insecure: false
 
 imjacinta:
   ingress:
-    rule: Host(`imjac.in`) || Host(`www.imjac.in`)
+    rule: Host(`imjac.in`) || Host(`www.imjac.in`) || Host(`jaci.au`)
   image:
     name: gcr.io/imjacinta/jaci/imjacinta
-    tag: 75d8579-dirty
+    tag: 4f89468
   resources:
     requests:
       memory: 400Mi
@@ -30,7 +30,7 @@ imjacinta:
 
 curtincourses:
   ingress:
-    rule: Host(`curtincourses.imjac.in`)
+    rule: Host(`curtincourses.imjac.in`) || Host(`curtincourses.jaci.au`)
   image:
     name: gcr.io/imjacinta/jaci/curtincourses
     tag: b78bb8b
@@ -54,7 +54,7 @@ postgresql:
     size: 4Gi
 
 traefik:
-  rule: Host(`traefik.imjac.in`)
+  rule: Host(`traefik.imjac.in`) || Host(`traefik.jaci.au`)
   # admin:admin is the default. It gets overridden by deploy.sh :)
   htpasswd: admin:$2y$10$VGrS48pf3mmT.C4TcZL8iO7bRSOlciGWoIORSpLyY/nSkvxVc77yS  # admin:admin
 
@@ -91,6 +91,14 @@ traefik:
       cpu: 50m
   # nodeSelector:     # For GCP, not required on microk8s
   #   preempt: "false"
+
+plex:
+  ingress:
+    rule: Host(`plex.imjac.in`) || Host(`plex.jaci.au`)
+
+homeassistant:
+  ingress:
+    rule: Host(`home-assistant.imjac.in`) || Host(`home-assistant.jaci.au`)
 
 # mariadb-galera:
 #   nameOverride: maria
