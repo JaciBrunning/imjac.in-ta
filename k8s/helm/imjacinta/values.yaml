@@ -12,7 +12,7 @@ insecure: false
 
 imjacinta:
   ingress:
-    rule: Host(`imjac.in`) || Host(`www.imjac.in`) || Host(`jaci.au`)
+    rule: Host(`imjac.in`) || Host(`www.imjac.in`)
   image:
     name: gcr.io/imjacinta/jaci/imjacinta
     tag: 4f89468
@@ -30,7 +30,7 @@ imjacinta:
 
 curtincourses:
   ingress:
-    rule: Host(`curtincourses.imjac.in`) || Host(`curtincourses.jaci.au`)
+    rule: Host(`curtincourses.imjac.in`)
   image:
     name: gcr.io/imjacinta/jaci/curtincourses
     tag: b78bb8b
@@ -54,7 +54,7 @@ postgresql:
     size: 4Gi
 
 traefik:
-  rule: Host(`traefik.imjac.in`) || Host(`traefik.jaci.au`)
+  rule: Host(`traefik.imjac.in`)
   # admin:admin is the default. It gets overridden by deploy.sh :)
   htpasswd: admin:$2y$10$VGrS48pf3mmT.C4TcZL8iO7bRSOlciGWoIORSpLyY/nSkvxVc77yS  # admin:admin
 
@@ -94,11 +94,11 @@ traefik:
 
 plex:
   ingress:
-    rule: Host(`plex.imjac.in`) || Host(`plex.jaci.au`)
+    rule: Host(`plex.jaci.au`)
 
 homeassistant:
   ingress:
-    rule: Host(`home-assistant.imjac.in`) || Host(`home-assistant.jaci.au`)
+    rule: Host(`home-assistant.jaci.au`)
 
 # mariadb-galera:
 #   nameOverride: maria
