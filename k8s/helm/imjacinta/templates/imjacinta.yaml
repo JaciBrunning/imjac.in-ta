@@ -8,3 +8,12 @@
 {{ template "rails.service" $dict }}
 ---
 {{ template "rails.ingress" $dict }}
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources
+spec:
+  hard:
+    requests.ephemeral-storage: 5Gi 
+    limits.ephemeral-storage: 10Gi
