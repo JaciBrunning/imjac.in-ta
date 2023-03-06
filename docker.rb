@@ -1,7 +1,7 @@
 require 'fileutils'
 
 DOCKER_TAG=ENV.fetch('DOCKER_TAG') {"#{`git rev-parse --short HEAD`.strip}#{`git diff HEAD --quiet || echo -dirty`.strip}"}
-DOCKER_REPO=ENV.fetch('DOCKER_REPO') {"gcr.io/imjacinta/jaci/imjacinta"}
+DOCKER_REPO=ENV.fetch('DOCKER_REPO') {"australia-southeast1-docker.pkg.dev/imjacinta/jaci/imjacinta"}
 
 DOCKER_IMG="#{DOCKER_REPO}:#{DOCKER_TAG}"
 
