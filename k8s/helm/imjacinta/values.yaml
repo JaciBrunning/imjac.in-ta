@@ -14,7 +14,7 @@ imjacinta:
   ingress:
     rule: Host(`imjac.in`) || Host(`www.imjac.in`)
   image:
-    name: gcr.io/imjacinta/jaci/imjacinta
+    name: australia-southeast1-docker.pkg.dev/imjacinta/jaci/imjacinta
     tag: 4f89468
   resources:
     requests:

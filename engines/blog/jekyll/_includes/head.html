@@ -24,6 +24,10 @@
   <meta property="og:url" content="{{ og_url }}" />
   <meta property="og:site_name" content="I'm Jac.in/ta" />
 
+  {% if page.noindex %}
+    <meta name="robots" content="noindex">
+  {% end %}
+
   <link rel="stylesheet" href="/ta/assets/css/milligram.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/ta/assets/css/blog.css">
