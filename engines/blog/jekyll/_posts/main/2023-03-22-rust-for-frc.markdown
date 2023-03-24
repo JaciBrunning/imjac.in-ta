@@ -169,7 +169,7 @@ What on earth is going on here? I thought we weren't allowed to use while loops 
 
 Because this code can run alongside other code, we can write dead-simple autonomous routines like this without needing to worry about command-based programming or any other structure to manage scheduling. It just happens for us, behind the scenes. Another fringe benefit is that we get to use whatever loop timing we want - you can have your elevator running at 100Hz, your controls at 50Hz, and your drivetrain at 200Hz if you so desire - no need to deal with threads. It just works.
 
-<img src='/ta/img/rust-for-frc/async-elevator-pid.png' style='width:700px;' /><br/>
+<img src='/ta/img/rust-for-frc/async-elevator-pid.png' style='width:100%;' /><br/>
 
 ## Two Cube Auto
 Let's have a look at another autonomous example...
